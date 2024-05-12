@@ -23,7 +23,7 @@ jobs:
         steps:
             - name: Create comment through API
               run: | 
-                gh API -X POST https://api.github.com/repos/${ORG}/${REPO}/issues/${ISSUE_NUM}/comments \
+                gh api -X POST https://github.com/h4ck0rman/CodeQL-querysuites/issues/7/comments \
                 -f body=':sparkles:**API Calls**:sparkles: were made to write this bloody comment!'
 
               env:
