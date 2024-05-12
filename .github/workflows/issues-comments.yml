@@ -3,7 +3,6 @@ name: Comment on Issues
 on:
     issues:
         types: [opened]
-    workflow_dispatch:
 
 jobs:
     comment-with-action:
@@ -29,6 +28,6 @@ jobs:
 
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                ORG: ${{ github.event.organization.login }}
+                ORG: ${{ github.repository_owner }}
                 REPO: ${{ github.event.repository.name }}
                 ISSUE_NUM: ${{ github.event.issue.number }}
