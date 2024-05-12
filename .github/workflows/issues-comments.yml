@@ -23,11 +23,11 @@ jobs:
         steps:
             - name: Create comment through API
               run: | 
-                gh api -X POST https://api.github.com/repos/${ORG}/${REPO}/issues/${ISSUE_NUM}/comments \
+                gh API -X POST https://api.github.com/repos/${ORG}/${REPO}/issues/${ISSUE_NUM}/comments \
                 -f body=':sparkles:**API Calls**:sparkles: were made to write this bloody comment!'
 
               env:
-                GITHUB_TOKEN: ${{ github.token }}
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 ORG: ${{ github.event.organization.login }}
                 REPO: ${{ github.event.repository.name }}
                 ISSUE_NUM: ${{ github.event.issue.number }}
