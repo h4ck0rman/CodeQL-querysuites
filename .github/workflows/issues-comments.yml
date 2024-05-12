@@ -1,0 +1,13 @@
+name: Comment on Issues
+
+on:
+    issues:
+        types: [opened]
+
+jobs:
+    comment-with-action:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: "Comment on issues"
+              run: echo "${{ toJson(github.event)}}" | jq
+              shell: bash
