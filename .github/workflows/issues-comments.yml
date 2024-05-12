@@ -8,13 +8,26 @@ jobs:
     comment-with-action:
         runs-on: ubuntu-latest
         steps: 
-            - name: Create comment
+            - name: Create comment through action
               uses: peter-evans/create-or-update-comment@v4
               with:
                 issue-number: ${{ github.event.issue.number }}
                 body: |
-                  This is a multi-line test comment
-                  - With GitHub **Markdown** :sparkles:
-                  - Created by [create-or-update-comment][1]
+                  This is a **multi-line** test comment from a leveraged :sparkles:**Public Action**:sparkles:
+                  - Created by Action
 
                 reactions: '+1'
+
+    comment-with-api:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Create comment through API
+              run: | 
+                gh API -X POST https://api.github.com/repos/${ORG}/${REPO}/issues/${ISSUE_NUM}/comments \
+                -f body=':sparkles:**API Calls**:sparkles: were made to write this bloody comment!'
+
+              env:
+                GITHUB_TOKEN: ${{ github.token }}
+                ORG: ${{ github.event.organization.login }}
+                REPO: ${{ github.event.repository.name }}
+                ISSUE_NUM: ${{ github.event.issue.number }}
