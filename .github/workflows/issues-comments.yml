@@ -3,6 +3,7 @@ name: Comment on Issues
 on:
     issues:
         types: [opened]
+    workflow_dispatch:
 
 jobs:
     comment-with-action:
