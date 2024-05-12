@@ -9,5 +9,5 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - name: "Comment on issues"
-              run: echo "${{ toJson(github.event)}}" | jq
+              run: echo '${{ toJSON(github.event) }}' | jq
               shell: bash
